@@ -6,38 +6,38 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-s
+
 app.use(bodyParser.json());
 
 // The mock database (an array)
 let fakeDatabase = [];
 
 // Endpoint to retrieve all entries from the database
-// GET /api/data
+// GET /api/data(Fake name)
 app.get('/api/data', async (req, res) => {
-    // Createes a delay using a promise and setTimeout
-    await new Promise(resolve => setTimeout(resolve, 600)); // 600ms delay
+    // Creates a delay using a promise and setTimeout Await is a keyword for an async function
+    await new Promise(resolve => setTimeout(resolve, 1000)); // 1 second delay
     // Send the mock database as a JSON response
     res.json(fakeDatabase);
 });
 
 
-// POST /api/data
+// POST /api/data(fake name)
 app.post('/api/data', async (req, res) => {
     // Simulate a delay using a promise and setTimeout
-    await new Promise(resolve => setTimeout(resolve, 600)); // 
+    await new Promise(resolve => setTimeout(resolve, 1000)); // 
     // Get the new data from the request body
     const newData = req.body;
-    // Add the new data to the mock database
+    // Add the new data to the fake database
     fakeDatabaseDatabase.push(newData);
     // Send the new data as a JSON response with 200 "OK" status code
     res.status(200).json(newData);
 });
 
-// Will update an existing entry in the database
+// This will update an existing entry in the database
 app.put('/api/data/:id', async (req, res) => {
     // Simulate a delay using a promise and setTimeout
-    await new Promise(resolve => setTimeout(resolve, 600)); // 
+    await new Promise(resolve => setTimeout(resolve, 1000)); // 
     // Get the ID from the request parameters
     const { id } = req.params;
     // Get the updated data from the request body
@@ -45,8 +45,9 @@ app.put('/api/data/:id', async (req, res) => {
 
     // Find the index of the data using an ID 
     const index = fakeDatabase.findIndex(data => data.id === parseInt(id));
+    //findIndex() returns the index of the first element that passes a test
     if (index !== -1) {
-        // Update the data entry in the mock database
+        // Update the data entry in the fake database
         fakeDatabase[index] = updatedData;
         // Send the updated data as a JSON response
         res.json(updatedData);
@@ -60,7 +61,7 @@ app.put('/api/data/:id', async (req, res) => {
 // DELETE /api/data/:id
 app.delete('/api/data/:id', async (req, res) => {
     // Simulate a delay using a promise and setTimeout
-    await new Promise(resolve => setTimeout(resolve, 600)); //
+    await new Promise(resolve => setTimeout(resolve, 1000)); //
     // Get the ID from the request parameters
     const { id } = req.params;
     // Find the index of the data entry with the matching ID
@@ -77,7 +78,7 @@ app.delete('/api/data/:id', async (req, res) => {
     }
 });
 
-// Start the server and listen on the specified port
+// Starts the server and listen on our port
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
